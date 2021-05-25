@@ -208,6 +208,9 @@ def map_plot(kwlist, timef, ct,types):
         zoo = 0 if ct == 'Worldwide' else 4
         fig = px.density_mapbox(fdata_f, lat='lang', lon='long',
                                 radius=cr, zoom=zoo, color_continuous_scale="turbid",mapbox_style = 'open-street-map')
+        fig.update_layout({
+            'plot_bgcolor': 'rgba(0, 0, 0, 0)',         # para maging transparent ang background
+            'paper_bgcolor': 'rgba(0, 0, 0, 0)',})
         maptext = '{} Map visualization'.format(i)
         st.markdown(
             '<p class ="subtitles">{}</p>'.format(maptext), unsafe_allow_html=True)
