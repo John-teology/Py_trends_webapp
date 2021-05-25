@@ -2,7 +2,7 @@ pytrends
 ephem
 pystan
 streamlit
-fbprophet==0.7.1
+fbprophet
 scipy
 geopy
 plotly
