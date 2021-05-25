@@ -1,4 +1,4 @@
-mkdir -p ~/.streamlit/
+mkdir -p ~/.streamlit/config.toml
 
 echo "\
 [general]\n\
