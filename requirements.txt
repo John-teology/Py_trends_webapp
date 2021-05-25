@@ -1,5 +1,6 @@
 pytrends
 ephem
+pystan
 streamlit
 fbprophet==0.7.1
 scipy
