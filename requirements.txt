@@ -1,4 +1,5 @@
-pytrends
+ephem
+pystan
 streamlit
 fbprophet
 scipy
@@ -6,5 +7,4 @@ geopy
 plotly
 pillow
 pandas
-pystan
-ephem
+pytrends
