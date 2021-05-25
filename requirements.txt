@@ -7,4 +7,5 @@ scipy
 geopy
 plotly
 pillow
+numpy
 pandas
