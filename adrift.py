@@ -348,7 +348,7 @@ with run_bot:
         
         
 with Frontface:
-    st.write('<p class =maintitle> DATA VISUALIZATION OF PYTREND MADE IN STREAMLIT!fog</p>',unsafe_allow_html=True)
+    st.write('<p class =maintitle> DATA VISUALIZATION OF PYTREND MADE IN STREAMLIT!</p>',unsafe_allow_html=True)
 
     ################### GRAPHS ##############################################################
 if submit:
