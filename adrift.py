@@ -7,6 +7,7 @@ from geopy.geocoders import Nominatim
 import plotly.express as px
 from PIL import Image
 import pandas as pd
+import plotly.graph_objects as go
 
 
 
@@ -364,26 +365,39 @@ if submit:
     
     
     with InterestOT:
-        st.markdown('<p class ="subtitles">Interest Over Time</p>',unsafe_allow_html = True)
         col1,col2 = st.beta_columns((1,1))
         try:
             iot = Interest_OT(kw,timeline,country,type_of)
+            dataf = iot.reset_index()
             df2 = []
+            fig_line = go.Figure()
             for data in kw:
                 a = data,iot[data].values.mean()
                 df2.append(a)
+                fig_line.add_trace(go.Scatter(x=dataf.date, y=dataf[data],
+                    mode='lines',
+                    name=data))
             hell = pd.DataFrame(df2)
-            fig = px.bar(df2, color = 0,x = 0, y = 1,height=250,
+            fig_bar = px.bar(df2, color = 0,x = 0, y = 1,height=300,
                                         labels={
                                             "1": "Count", # renaming the labels
                                             "0": "Labels"
                                         },)
-            col2.subheader('Average No. of Search about {}'.format(User_input))
-            fig.update_layout({
+            fig_bar.update_layout({
             'plot_bgcolor': 'rgba(0, 0, 0, 0)',         # para maging transparent ang background
             'paper_bgcolor': 'rgba(0, 0, 0, 0)',})
-            col2.plotly_chart(fig)
-            col1.line_chart(iot)
+            fig_line.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)',         # para maging transparent ang background
+            'paper_bgcolor': 'rgba(0, 0, 0, 0)',})
+            fig_line.update_layout(
+                    autosize=False,
+                    height=330,)
+            for i in range(2): col2.write("   ")
+            col2.plotly_chart(fig_bar)
+            col2.markdown('<p class ="subtitles">Average No. of Search about {}</p>'.format(User_input),unsafe_allow_html = True)
+            col1.plotly_chart(fig_line)
+            col1.markdown('<p class ="subtitles">Interest Over Time</p>',unsafe_allow_html = True)
+            
+            
             
         except AttributeError or KeyError:
                 col1.error('The API return no Value')
