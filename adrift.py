@@ -145,10 +145,7 @@ st.markdown("""
     background: #1FDE83;
 }
 .line_chart{
-    background: #0C1916;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(0.5turn,#2E3734CC,#07221C);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(0.5turn,#2E3734CC,#07221C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color: rgb(255, 255, 255);
+    background: #0C1916;
 }
 </style>
 """,unsafe_allow_html=True
@@ -308,9 +305,8 @@ def trendingsearch(tcountry):
     return trends.loc[:9]
 
 def forecast(df,time,valName): 
-    model = Prophet(interval_width = 0.65,yearly_seasonality = True if time >= 65 else False, # pag 12 months or 5 years dapat true to kaya may ganto and False pag hindi
-                                          daily_seasonality = True if time <= 20 else False) # eto naman ay pag 3 months or 1 week kailangan True and False pag hindi
-    model.fit(df)  
+    model = Prophet(interval_width = 0.65,yearly_seasonality = True if time >= 65 else False, 
+                                          daily_seasonality = True if time <= 20 else False) 
     future = model.make_future_dataframe(periods=time)
     forecast = model.predict(future)
     model.plot(forecast,xlabel='Dates', ylabel='{} Search Values'.format(valName))
@@ -380,13 +376,13 @@ if submit:
             hell = pd.DataFrame(df2)
             fig_bar = px.bar(df2, color = 0,x = 0, y = 1,height=300,
                                         labels={
-                                            "1": "Count", # renaming the labels
+                                            "1": "Count", 
                                             "0": "Labels"
                                         },)
             fig_bar.update_layout({
-            'plot_bgcolor': 'rgba(0, 0, 0, 0)',         # para maging transparent ang background
+            'plot_bgcolor': 'rgba(0, 0, 0, 0)',       
             'paper_bgcolor': 'rgba(0, 0, 0, 0)',})
-            fig_line.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)',         # para maging transparent ang background
+            fig_line.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)',        
             'paper_bgcolor': 'rgba(0, 0, 0, 0)',})
             fig_line.update_layout(
                     autosize=False,
