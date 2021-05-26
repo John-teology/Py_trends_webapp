@@ -307,13 +307,11 @@ def trendingsearch(tcountry):
 def forecast(df,time,valName): 
     model = Prophet(interval_width = 0.65,yearly_seasonality = True if time >= 65 else False, 
                                           daily_seasonality = True if time <= 20 else False) 
+    model.fit(df)
     future = model.make_future_dataframe(periods=time)
     forecast = model.predict(future)
     model.plot(forecast,xlabel='Dates', ylabel='{} Search Values'.format(valName))
     
-  
-
-
 
 def Prediction(prelist, tml,country,types):
     correct = countries[country]
