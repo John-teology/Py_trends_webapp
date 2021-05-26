@@ -6,11 +6,11 @@ email = \"your-email@domain.com\"\n\
 " > ~/.streamlit/credentials.toml
 
 echo "[theme] "\
-primaryColor = "#84a3a7"
-backgroundColor = "#EFEDE8"
-secondaryBackgroundColor = "#fafafa"
-textColor= "#424242"
-font = "sans serif"
+base="dark"
+primaryColor = '#69FFB3'
+backgroundColor = '#3037351F'
+secondaryBackgroundColor= '#f37b05'
+textColor = '#FFFFFF'
 
 echo "\
 [server]\n\
