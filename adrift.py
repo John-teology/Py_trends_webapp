@@ -144,7 +144,7 @@ st.markdown("""
     background: #1FDE83;
 }
 .line_chart{
-    background: #0D100F; 
+    background: #0C1916; 
     color:rgb(255, 255, 255);
 }
 </style>
