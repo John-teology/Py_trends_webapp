@@ -366,12 +366,11 @@ if submit:
             df2 = []
             fig_line = go.Figure()
             for data in kw:
-                a = data,iot[data].values.mean()
-                df2.append(a)
                 fig_line.add_trace(go.Scatter(x=dataf.date, y=dataf[data],
                     mode='lines',
                     name=data))
-            hell = pd.DataFrame(df2)
+                a = data,iot[data].values.mean()
+                df2.append(a)
             fig_bar = px.bar(df2, color = 0,x = 0, y = 1,height=300,
                                         labels={
                                             "1": "Count", 
