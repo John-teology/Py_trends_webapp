@@ -292,7 +292,7 @@ def cleaning(dfname,onekw):
 def topcharts(loc,year):
     ct = 'GLOBAL' if loc == '' else loc
     pytrends = TrendReq(hl = 'en-US', tz = 360 ,timeout= (10,25) )
-    charts = pytrends.top_charts(year, hl='en-US', tz=300, geo=ct)
+    charts = pytrends.top_charts(year, hl='en-US', tz=360, geo=ct)
     return charts.values
 
 
@@ -439,7 +439,7 @@ if submit:
             col1.error('The API return no Value')
         try:
             col2.dataframe(trendingsearch(topchartcountry.lower()))
-        except KeyError:
+        except AttributeError:
             col2.error('The API return no Value')
         st.write('---')
 
