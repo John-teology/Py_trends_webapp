@@ -216,6 +216,7 @@ def map_plot(kwlist, timef, ct,types):
         st.markdown(
             '<p class ="subtitles">{}</p>'.format(maptext), unsafe_allow_html=True)
         st.plotly_chart(fig)
+        st.dataframe(fdata_f)
 
 
 def region_names(kw_list, tl, cot,types):
