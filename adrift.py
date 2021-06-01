@@ -206,9 +206,9 @@ def map_plot(kwlist, timef, ct,types):
         list1 = fdata_f[i].values.tolist()
         m = interp1d([ min(list1), max(list1)],[5, 16])
         cr = m(list1)
-        zoo = 0 if ct == 'Worldwide' else 4
+        zoo = 0 if ct == 'Worldwide' else 3.9
         fig = px.density_mapbox(fdata_f, lat='lang', lon='long',
-                                radius=cr, zoom=zoo, color_continuous_scale="turbid",mapbox_style = 'open-street-map')
+                                radius=cr, zoom=zoo, color_continuous_scale="turbid",mapbox_style = 'open-street-map',z = i,hover_name = 'geoName')
         fig.update_layout({
             'plot_bgcolor': 'rgba(0, 0, 0, 0)',         # para maging transparent ang background
             'paper_bgcolor': 'rgba(0, 0, 0, 0)',})
@@ -216,7 +216,6 @@ def map_plot(kwlist, timef, ct,types):
         st.markdown(
             '<p class ="subtitles">{}</p>'.format(maptext), unsafe_allow_html=True)
         st.plotly_chart(fig)
-        st.dataframe(fdata_f)
 
 
 def region_names(kw_list, tl, cot,types):
