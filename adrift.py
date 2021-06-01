@@ -204,7 +204,7 @@ def map_plot(kwlist, timef, ct,types):
         dataf['lang'] = lang
         fdata_f = dataf.reset_index()
         list1 = fdata_f[i].values.tolist()
-        m = interp1d([ min(list1), max(list1)],[5, 16])
+        m = interp1d([ min(list1), max(list1)],[10, 20])
         cr = m(list1)
         zoo = 0 if ct == 'Worldwide' else 3.9
         fig = px.density_mapbox(fdata_f, lat='lang', lon='long',
