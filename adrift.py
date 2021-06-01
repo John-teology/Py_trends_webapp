@@ -216,6 +216,7 @@ def map_plot(kwlist, timef, ct,types):
         st.markdown(
             '<p class ="subtitles">{}</p>'.format(maptext), unsafe_allow_html=True)
         st.plotly_chart(fig)
+        st.dataframe(fdata_f)
 
 
 def region_names(kw_list, tl, cot,types):
@@ -333,7 +334,7 @@ with run_bot:
         st.sidebar.image(icon,use_column_width=True)
         st.markdown('<p class ="subbiggy">Navigator</p>',unsafe_allow_html = True)
         st.write('<p class ="textinstructionsstyle">Enter to Search term or a topic and seperate it with "-"</p>',unsafe_allow_html=True)
-        User_input = st.text_input('Search Topic here....','Search')
+        User_input = st.text_input('Search Topic here....')
         type_of = st.selectbox('Select Type of Search',options=list(typeSearch.keys()), index=0)
         kw = splitter(User_input)
         time = st.selectbox('Select Time Frame', options = list(timech.keys()), index = 2)
@@ -425,7 +426,7 @@ if submit:
             st.error('The API return no Value')
             st.warning('Try to input meaningful terms')
         st.write('---')
-
+    
 
     with Top_trends:
         col1,col2 = st.beta_columns((2,2))
